@@ -18,7 +18,12 @@ public class Board {
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("Menu");
         JMenuItem reset = new JMenuItem("Reset");
+        
+        //Dialog Box to determine number of pairs to play with
+        JFrame dFrame = new JFrame();
+        Object numberOfPairs = JOptionPane.showInputDialog(dFrame, "Enter number of pairs you want to play with: ");
 
+        
         //Sets reaction to clicking reset from the menuBar
         reset.addActionListener(new ActionListener() {
             @Override
