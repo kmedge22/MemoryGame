@@ -10,6 +10,7 @@ public class Card extends JButton {
     private Boolean flipped;
     private Color myColor;
     private Boolean isMatched;
+    private String stringColor;
 
     public Card(Color myColor) {
         this.setPreferredSize(new Dimension(200,200));
@@ -19,6 +20,31 @@ public class Card extends JButton {
         this.setBackground(Color.DARK_GRAY);
         this.setOpaque(true);
         this.setBorderPainted(false);
+        this.stringColor = "";
+    }
+
+    public Card(String cardColor){
+        this.setPreferredSize(new Dimension(200,200));
+        this.myColor = Color.WHITE;
+        this.isMatched = false;
+        this.flipped = false;
+        this.setBackground(Color.DARK_GRAY);
+        this.setOpaque(true);
+        this.setBorderPainted(false);
+        this.stringColor = cardColor;
+        setText("");
+    }
+
+    public Color getMyColor() {
+        return myColor;
+    }
+
+    public String getStringColor() {
+        return stringColor;
+    }
+
+    public void setMatched(Boolean trueOrFalse) {
+        isMatched = trueOrFalse;
     }
 
     /**
@@ -36,8 +62,10 @@ public class Card extends JButton {
         this.flipped = !flipped;
         if (flipped) {
             setBackground(myColor);
+            setText(stringColor);
         } else {
             setBackground(Color.DARK_GRAY);
+            setText("");
         }
     }
 
@@ -51,10 +79,9 @@ public class Card extends JButton {
     public boolean equals(Object other) {
         if (this == other) return true;
         if (other == null || getClass() != other.getClass()) return false;
-
         Card card = (Card) other;
 
-        return myColor.equals(card.myColor);
+        return myColor.equals(card.myColor) && stringColor.equals(card.stringColor);
     }
 
 }
