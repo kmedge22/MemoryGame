@@ -13,12 +13,14 @@ public class Rules {
     private int howManyMatches = 0;
     private int selectNum = 0;
     private JFrame parentFrame;
+    private int numberOfPairs;
 
     /**
      * @param other pass in Jframe object from board setUp
      */
-    public Rules(JFrame other) {
+    public Rules(JFrame other, int numberOfPairs) {
         parentFrame = other;
+        this.numberOfPairs = numberOfPairs;
     }
 
     /**
@@ -47,7 +49,7 @@ public class Rules {
                 cardsPerTurn[1].isMatched();
                 selectNum = 0;
                 howManyMatches++;
-                if (howManyMatches == 6) {
+                if (howManyMatches == numberOfPairs) {
                     gameOver();
                 }
             } else {
